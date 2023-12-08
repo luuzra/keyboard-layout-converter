@@ -5,67 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keyboard Layout Converter</title>
     <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
 
-    h2 {
-        text-align: center;
-        color: #333;
-    }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
 
-    label {
-        display: block;
-        margin-bottom: 10px;
-        color: #555;
-    }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
 
-    input {
-        padding: 8px;
-        font-size: 16px;
-        width: 100%;
-        box-sizing: border-box;
-    }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
 
-    button {
-        background-color: #4caf50;
-        color: #fff;
-        padding: 10px 15px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
 
-    button:hover {
-        background-color: #45a049;
-    }
+        button:hover {
+            background-color: #45a049;
+        }
 
-    #outputText {
-        margin-top: 20px;
-        font-size: 18px;
-        color: #333;
-    }
-</style>
+        #outputText {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+    </style>
 </head>
 <body>
     <h2>Keyboard Layout Converter</h2>
     <label for="inputText">Enter text:</label>
     <input type="text" id="inputText">
     <button onclick="convertLayout()">Convert</button>
-    <p id="outputText"></p>
+    <textarea id="outputText" readonly></textarea>
 
     <script>
         function convertLayout() {
             const inputText = document.getElementById('inputText').value;
             const outputText = convert(inputText);
-            document.getElementById('outputText').innerText = `Converted Text: ${outputText}`;
+            document.getElementById('outputText').value = `Converted Text: ${outputText}`;
         }
 
         function convert(text) {
